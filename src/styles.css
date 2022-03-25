@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Mukta', sans-serif;
+    font: 14px;
+  }
+  
+  a {
+    color: #00274C;
+  }
+  
+  main {
+    margin-top: 25px;
+  }
+  
+  fieldset {
+    margin: 10px;
+  }
+  
+  .navbar-dark {
+    background-color: #00274C;
+  }
+  
+  .navbar-dark .navbar-brand:hover, .navbar-dark .nav-item:hover .nav-link {
+    color: #FFCB05;
+  }
