@@ -12,6 +12,7 @@ export class EmployerComponent implements OnInit {
   location: string | undefined
   description: string | undefined
   website: string | undefined
+  _id: string | undefined
 
   constructor(private service: EmployerService) { }
 
@@ -19,6 +20,41 @@ export class EmployerComponent implements OnInit {
     this.service.getEmployers().subscribe(response => {
       this.employers = response
     })
+  }
+
+  addEmployer(): void {
+    // create new json object from form values
+    let employer = {
+      name: this.name,
+      location: this.location,
+      description: this.description,
+      website: this.website
+    }
+
+    // pass the new object to the service, which then calls POST in our server REST API
+    this.service.addEmployer(employer).subscribe(response => {
+      // refresh the list on the left
+      this.getEmployers()
+
+      // clear the form on the right
+      this.clearForm()
+    })
+  }
+
+  clearForm(): void {
+    this.name = undefined
+    this.location = undefined
+    this.description = undefined
+    this.website = undefined
+    this._id = undefined
+  }
+
+  selectEmployer(name: string, location: string, description: string, website: string, _id: string): void {
+    this.name = name
+    this.location = location
+    this.description = description
+    this.website = website
+    this._id = _id
   }
 
   ngOnInit(): void {

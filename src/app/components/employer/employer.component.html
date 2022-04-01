@@ -4,7 +4,10 @@
             <h1>Employers</h1>
             <ul class="list-group">
                 <li *ngFor="let employer of employers" class="list-group-item">
-                    <h5>{{employer.name}}</h5>
+                    <a class="h5" 
+                        (click)="selectEmployer(employer.name, employer.location, employer.description, employer.location, employer._id)">
+                            {{employer.name}}
+                    </a>
                     <h6>{{employer.location}}</h6>
                     <p>{{employer.description}}</p>
                     <p *ngIf="employer.website">
@@ -34,7 +37,10 @@
                     <label class="col-2" for="website">Website</label>
                     <input name="website" id="website" type="url" [(ngModel)]="website" />
                 </fieldset>
-                <button class="btn btn-warning offset-2">Add</button>
+                <button class="btn btn-warning offset-2 m-1" (click)="addEmployer()" *ngIf="!_id">Add</button>
+                <button class="btn btn-warning m-1" *ngIf="_id">Update</button>
+                <button class="btn btn-warning m-1" (click)="clearForm()">Reset</button>
+                <input name="_id" id="_id" [(ngModel)]="_id" type="hidden" />
             </form>
         </div>
     </div>

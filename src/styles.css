@@ -23,3 +23,11 @@ body {
   .navbar-dark .navbar-brand:hover, .navbar-dark .nav-item:hover .nav-link {
     color: #FFCB05;
   }
+
+  .h5 {
+    cursor: pointer;
+  }
+
+  .btn {
+    width: 80px;
+  }
