@@ -8,6 +8,10 @@ import { EmployerService } from 'src/app/services/employer.service';
 })
 export class EmployerComponent implements OnInit {
   employers: any
+  name: string | undefined
+  location: string | undefined
+  description: string | undefined
+  website: string | undefined
 
   constructor(private service: EmployerService) { }
 

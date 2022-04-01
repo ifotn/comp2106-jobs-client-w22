@@ -1,8 +1,41 @@
 <main class="container">
-    <h1>Employers</h1>
-    <ul>
-        <li *ngFor="let employer of employers">
-            {{employer.name}}
-        </li>
-    </ul>
+    <div class="row">
+        <div class="col-md-5 bg-light m-1 p-3">
+            <h1>Employers</h1>
+            <ul class="list-group">
+                <li *ngFor="let employer of employers" class="list-group-item">
+                    <h5>{{employer.name}}</h5>
+                    <h6>{{employer.location}}</h6>
+                    <p>{{employer.description}}</p>
+                    <p *ngIf="employer.website">
+                        <a href="{{employer.website}}" target="_new">
+                            {{employer.website}}
+                        </a>                           
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-5 bg-light m-1 p-3">
+            <h1>Employer Details</h1>
+            <form>
+                <fieldset>
+                    <label class="col-2" for="name">Name *</label>
+                    <input name="name" id="name" required [(ngModel)]="name" />
+                </fieldset>
+                <fieldset>
+                    <label class="col-2" for="location">Location *</label>
+                    <input name="location" id="location" required [(ngModel)]="location" />
+                </fieldset>
+                <fieldset>
+                    <label class="col-2" for="description">Description</label>
+                    <textarea name="description" id="description" [(ngModel)]="description"></textarea>
+                </fieldset>
+                <fieldset>
+                    <label class="col-2" for="website">Website</label>
+                    <input name="website" id="website" type="url" [(ngModel)]="website" />
+                </fieldset>
+                <button class="btn btn-warning offset-2">Add</button>
+            </form>
+        </div>
+    </div>
 </main>
