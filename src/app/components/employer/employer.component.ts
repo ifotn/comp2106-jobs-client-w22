@@ -57,6 +57,32 @@ export class EmployerComponent implements OnInit {
     this._id = _id
   }
 
+  deleteEmployer(_id: string) {
+    if (confirm('Are you sure?')) {
+      this.service.deleteEmployer(_id).subscribe(response => {
+        this.getEmployers()
+        this.clearForm()
+      })
+    }
+  }
+
+  updateEmployer(): void {
+    // populate an employer json object from our form values
+    let employer = {
+      _id: this._id,
+      name: this.name,
+      location: this.location,
+      description: this.description,
+      website: this.website
+    }
+
+    // call update method on service and pass employer object to it
+    this.service.updateEmployer(employer).subscribe(response => {
+      this.getEmployers()
+      this.clearForm()
+    })
+  }
+
   ngOnInit(): void {
     this.getEmployers()
   }
